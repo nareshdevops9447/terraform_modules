@@ -15,3 +15,16 @@ variable "vpc_tags" {
   default = {} # optional, asking user to provide
 }
 
+variable "azs" {
+  type = list
+  
+}
+
+variable "public_subnet_cidr" {
+  type = list
+}
+
+variable "public_subnet_names" {
+  type = list
+  default = {}
+}

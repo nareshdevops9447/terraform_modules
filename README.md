@@ -23,3 +23,7 @@ Database subnet group(a group of database subnets)
 vpc_cidr(required) : users should provide vpc cidr
 tags(required): users should provide tags
 vpc_tags(optional):user should provide vpc_tags
+azs ( required) : user should provide 2 az as list
+public_subnet_cidr (required) : user should provide 2 public subnet cidr
+public_subnet_tags ( optional) : user can provide public subnet tags
+public_subnet_names ( required ) : user should provide public subnet names same as they provided public subnet cidr
