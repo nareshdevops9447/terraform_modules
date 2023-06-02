@@ -18,7 +18,7 @@
 # public subnets in 1a and 1b, public route table , routes and associates between subnet and route table
 # here we need to create 2 subnets
 
-resource "aws_subnet" "main" {
+resource "aws_subnet" "public" {
   count = length(var.public_subnet_cidr)
   vpc_id     = aws_vpc.main.id
   cidr_block = var.public_subnet_cidr[count.index]
@@ -33,7 +33,7 @@ resource "aws_subnet" "main" {
 
 # route table
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.public.id
   tags = merge ( var.tags, var.public_route_table_tags, {"Name" = var.public_route_table_name })
 
 }
@@ -45,3 +45,9 @@ resource "aws_route" "public" {
   destination_cidr_block    = "0.0.0.0/0"
   gateway_id = aws_internet_gateway.gw.id
 }
+
+# resource "aws_route_table_association" "public" {
+#   count = length(var.public_subnet_cidr)
+#   subnet_id      = aws_subnet.foo.id
+#   route_table_id = aws_route_table.bar.id
+# }
