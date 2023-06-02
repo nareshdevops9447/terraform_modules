@@ -33,7 +33,7 @@ resource "aws_subnet" "public" {
 
 # route table
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.public.id
+  vpc_id = aws_vpc.main.id
   tags = merge ( var.tags, var.public_route_table_tags, {"Name" = var.public_route_table_name })
 
 }
