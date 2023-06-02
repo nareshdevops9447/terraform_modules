@@ -70,3 +70,8 @@ variable "private_route_table_tags" {
 variable "private_route_table_name" {
  
 }
+
+variable "nat_tags" {
+  type = map
+  default = {}
+}

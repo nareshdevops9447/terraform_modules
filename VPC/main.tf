@@ -67,6 +67,24 @@ resource "aws_route_table_association" "public" {
   
 }
 
+# NAT Gateway
+
+resource "aws_eip" "main" {
+
+}
+
+resource "aws_nat_gateway" "main" {
+  allocation_id = aws_eip.main.id
+  subnet_id     = aws_subnet.public[*].id
+
+  tags = merge( var.tags,
+  var.nat_tags)
+
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.example]
+}
+
 # route table
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
