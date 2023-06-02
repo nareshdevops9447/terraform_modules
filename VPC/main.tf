@@ -121,6 +121,15 @@ resource "aws_route_table_association" "private" {
   
 }
 
+resource "aws_route_table" "database" { # one route table for public subnets
+  vpc_id = aws_vpc.main.id
+  tags = merge(
+    var.tags,
+    var.database_route_table_tags,
+    {"Name" = var.database_route_table_name}
+  )
+}
+
 # aws route table database
 
 resource "aws_route" "database" {
@@ -134,3 +143,12 @@ resource "aws_route_table_association" "database" {
    subnet_id      = element(aws_subnet.database[*].id, count.index)
    route_table_id = aws_route_table.database.id
  }
+
+resource "aws_db_subnet_group" "database" {
+  name       = lookup(var.tags, "Name")
+  subnet_ids = aws_subnet.database[*].id
+  tags = merge(
+    var.tags,
+    var.database_subnet_group_tags
+  )
+}
