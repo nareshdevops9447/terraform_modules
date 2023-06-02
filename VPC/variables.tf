@@ -45,6 +45,6 @@ variable "public_route_table_tags" {
 }
 
 variable "public_route_table_name" {
-  type = map
+ 
 
 }
