@@ -19,3 +19,7 @@ Route Table associations(Route table should be associated with subnets)
 Database subnet group(a group of database subnets)
 
 ## Inputs
+
+vpc_cidr(required) : users should provide vpc cidr
+tags(required): users should provide tags
+vpc_tags(optional):user should provide vpc_tags
