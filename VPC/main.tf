@@ -144,11 +144,11 @@ resource "aws_route_table_association" "database" {
    route_table_id = aws_route_table.database.id
  }
 
-# resource "aws_db_subnet_group" "database" {
-#   name       = lookup(var.tags, "Name")
-#   subnet_ids = aws_subnet.database[*].id
-#   tags = merge(
-#     var.tags,
-#     var.database_subnet_group_tags
-#   )
-# }
+resource "aws_db_subnet_group" "database" {
+   name       = lookup(var.tags, "Name")
+   subnet_ids = aws_subnet.database[*].id
+   tags = merge(
+     var.tags,
+     var.database_subnet_group_tags
+   )
+ }
