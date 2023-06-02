@@ -105,3 +105,32 @@ resource "aws_route_table_association" "private" {
    subnet_id      = element(aws_subnet.private[*].id, count.index)
    route_table_id = aws_route_table.private.id
  }
+
+ # database Subnet
+
+ resource "aws_subnet" "database" {
+  count = length(var.database_subnet_cidr)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.database_subnet_cidr[count.index]
+  availability_zone = var.azs[count.index]
+
+  tags = merge ( var.tags, 
+  var.database_subnet_tags, 
+  {Names= var.database_subnet_names[count.index]}
+  )
+  
+}
+
+# aws route table database
+
+resource "aws_route" "database" {
+  route_table_id            = aws_route_table.database.id
+  destination_cidr_block    = "0.0.0.0/0"
+  nat_gateway_id = aws_nat_gateway.main.id
+}
+
+resource "aws_route_table_association" "database" {
+   count = length(var.database_subnet_cidr)
+   subnet_id      = element(aws_subnet.database[*].id, count.index)
+   route_table_id = aws_route_table.database.id
+ }
