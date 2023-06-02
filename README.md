@@ -27,3 +27,7 @@ azs ( required) : user should provide 2 az as list
 public_subnet_cidr (required) : user should provide 2 public subnet cidr
 public_subnet_tags ( optional) : user can provide public subnet tags
 public_subnet_names ( required ) : user should provide public subnet names same as they provided public subnet cidr
+
+igw_tags ( optional) - user can provide igw tags
+public_route_table_tags (optional) - user can provide route table tags
+public_route_table_names ( required) - user should provide public route table name

@@ -33,3 +33,18 @@ variable "public_subnet_tags" {
   default = {}
 
 }
+
+variable "igw_tags" {
+  type = map
+  default = {}
+}
+
+variable "public_route_table_tags" {
+  type = map
+  default = {}
+}
+
+variable "public_route_table_names" {
+  type = map
+
+}

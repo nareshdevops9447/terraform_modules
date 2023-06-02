@@ -6,6 +6,15 @@
 
  }
 
+ # internet gateway
+
+ resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.main.id
+  tags = merge( var.tags, var.igw_tags, )
+
+  
+}
+
 # public subnets in 1a and 1b, public route table , routes and associates between subnet and route table
 # here we need to create 2 subnets
 
@@ -22,3 +31,9 @@ resource "aws_subnet" "main" {
   
 }
 
+# route table
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+  tags = merge ( var.tags, var.public_route_table_tags, {"Name" = var.public_route_table_tags })
+
+}
