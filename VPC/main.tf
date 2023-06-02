@@ -2,7 +2,7 @@
  resource "aws_vpc" "main" {
     cidr_block = var.cidr # user must provide own cidr
    instance_tenancy = "default"
-   tags = var.tags
+   tags = merge( var.tags, var.vpc_tags )
 
  }
 

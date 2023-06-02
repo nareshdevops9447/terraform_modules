@@ -7,5 +7,10 @@ variable "tags" {
   type = map
  # default = {
   # Name = "vpc"
-  # }
+  # }s
+}
+
+variable "vpc_tags" {
+  type = map
+  default = {} # optional, asking user to provide
 }
