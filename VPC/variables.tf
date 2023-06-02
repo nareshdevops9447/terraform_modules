@@ -26,5 +26,4 @@ variable "public_subnet_cidr" {
 
 variable "public_subnet_names" {
   type = list
-  default = {}
 }
