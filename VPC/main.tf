@@ -16,6 +16,6 @@ resource "aws_subnet" "main" {
   availability_zone = var.azs[count.index]
 
   tags = merge ( var.tags, var.public_subnet_tags, {Names= var.public_subnet_names[count.index]})
-  {}
+  
 }
 
