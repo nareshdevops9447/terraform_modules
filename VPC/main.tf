@@ -1,12 +1,8 @@
-# # this will create vpc
-# resource "aws_vpc" "this" {
-#    cidr_block = var.cidr
-#   instance_tenancy = "default"
+# this will create vpc
+ resource "aws_vpc" "main" {
+    cidr_block = var.cidr # user must provide own cidr
+   instance_tenancy = "default"
+   tags = var.tags
 
-# }
+ }
 
-resource "aws_vpc" "this" {
-    cidr_block = local.cidr
-    instance_tenancy = "default"
-    tags = var.tags
-}
