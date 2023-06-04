@@ -1,6 +1,8 @@
 # this will create vpc
  resource "aws_vpc" "main" {
     cidr_block = var.vpc_cidr # user must provide own cidr
+    enable_dns_hostnames = true
+    enable_dns_support = true
    instance_tenancy = "default"
    tags = merge( var.tags, var.vpc_tags )
 
