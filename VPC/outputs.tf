@@ -8,5 +8,5 @@ output "db_subnet_group_name" {
 
 output "private_subnet_ids" {
     description = "list of private IDs"
-    value = "aws_subnet.private[*].id"
+    value = aws_subnet.private[*].id
 }
